@@ -26,6 +26,10 @@ io.on('connection', (socket) => {
     });
 });
 
+app.get('/', (req, res) => {
+    res.send('Node.js WebSocket server is running!');
+});
+
 // Endpoint to receive data from the lambda and forward to the client via WebSocket
 app.post('/process-task', express.json(), (req, res) => {
     const data = req.body;
