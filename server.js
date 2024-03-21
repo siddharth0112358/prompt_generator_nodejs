@@ -32,8 +32,11 @@ app.get('/', (req, res) => {
 
 // Endpoint to receive data from the lambda and forward to the client via WebSocket
 app.post('/process-task', express.json(), (req, res) => {
-    const data = req.body;
-    sockets.forEach(socket => socket.emit('lambdaData', data));
+    const {sessionId, ...data} = req.body; // Destructure to separate sessionId from other data
+    sockets.forEach(socket => {
+        // Include the sessionId in the data sent to each client
+        socket.emit('lambdaData', { sessionId, ...data });
+    });
     res.json({status: 'Data sent to WebSocket clients.'});
 });
 
