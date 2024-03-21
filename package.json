@@ -1,0 +1,17 @@
+{
+  "name": "nodejs-websocket-backend",
+  "version": "1.0.0",
+  "description": "Backend to handle WebSocket communication.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^4.0.0"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
